@@ -9,8 +9,8 @@ const path = require('path');
       files
         .filter((file) => file.isFile() && !file.name.startsWith('.'))
         .forEach((file) => {
-          const filePath = file.path + '/' + file.name;
-          const distFilePath = './files-copy/' + file.name;
+          const filePath = path.join(file.path, file.name);
+          const distFilePath = path.join(__dirname, 'files-copy', file.name);
           fs.copyFile(filePath, distFilePath, (err) => console.error(err));
         });
     },
