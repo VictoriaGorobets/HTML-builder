@@ -1,7 +1,8 @@
 const fs = require('fs');
+const path = require('path');
 
 (function copyDir() {
-  fs.readdir('./files', { withFileTypes: true }, (error, files) => {
+  fs.readdir(path.join('./files'), { withFileTypes: true }, (error, files) => {
     files
       .filter((file) => file.isFile() && !file.name.startsWith('.'))
       .forEach((file) => {
